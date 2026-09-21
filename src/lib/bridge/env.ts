@@ -1,4 +1,4 @@
-import { HOSTINGER_SMTP_HOST, HOSTINGER_SMTP_PORT, TRANSACTIONAL_FROM } from "./canonical";
+import { CANONICAL_SUPABASE_URL, HOSTINGER_SMTP_HOST, HOSTINGER_SMTP_PORT, TRANSACTIONAL_FROM, assertCanonicalSupabaseUrl } from "./canonical";
 
 function read(key: string): string | undefined {
   const v = typeof process === "undefined" ? undefined : process.env[key]?.trim();
@@ -6,7 +6,8 @@ function read(key: string): string | undefined {
 }
 
 export const bridgeEnv = {
-  supabaseUrl: () => read("SUPABASE_URL") || read("VITE_SUPABASE_URL"),
+  supabaseUrl: () =>
+    assertCanonicalSupabaseUrl(read("SUPABASE_URL") || read("VITE_SUPABASE_URL") || CANONICAL_SUPABASE_URL),
   supabaseAnon: () => read("VITE_SUPABASE_PUBLISHABLE_KEY") || read("VITE_SUPABASE_ANON_KEY"),
   supabaseService: () => read("SUPABASE_SERVICE_ROLE_KEY"),
   razorpayKeyId: () => read("RAZORPAY_KEY_ID"),
@@ -23,6 +24,8 @@ export const bridgeEnv = {
   mailFrom: () => read("MAIL_FROM") || TRANSACTIONAL_FROM,
   appUrl: () => read("BETTER_AUTH_URL") || read("APP_URL") || "https://bridge.crayonspictures.com",
   databaseUrl: () => read("DATABASE_URL"),
+  loopHandoffUrl: () => read("LOOP_HANDOFF_URL"),
+  loopHandoffSecret: () => read("LOOP_HANDOFF_SECRET"),
 };
 
 export function integrationStatus() {
@@ -33,5 +36,6 @@ export function integrationStatus() {
     razorpayWebhook: Boolean(bridgeEnv.razorpayWebhookSecret()),
     s3: Boolean(bridgeEnv.s3Bucket() && bridgeEnv.awsAccessKey() && bridgeEnv.awsSecretKey()),
     mail: Boolean(bridgeEnv.smtpHost() && bridgeEnv.smtpUser() && bridgeEnv.smtpPass()),
+    loop: Boolean(bridgeEnv.loopHandoffUrl() && bridgeEnv.loopHandoffSecret()),
   };
 }
