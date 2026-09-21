@@ -43,7 +43,7 @@ export const Route = createRootRoute({
       <body className="bg-bg text-fg antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-3 focus:py-2 focus:text-accent-fg"
+          className="fixed left-4 top-4 z-50 bg-accent px-3 py-2 text-accent-fg opacity-0 pointer-events-none focus:opacity-100 focus:pointer-events-auto"
         >
           Skip to content
         </a>

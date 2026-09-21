@@ -1,5 +1,5 @@
-import type { TitleStatus } from "./types";
-import { TITLE_STATUS_ORDER } from "./lifecycle";
+import type { TitleStatus } from "./types.ts";
+import { TITLE_STATUS_ORDER } from "./lifecycle.ts";
 
 export type QcDecision = "pass" | "fail" | "request_changes" | null;
 

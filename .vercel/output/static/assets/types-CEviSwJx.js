@@ -1,0 +1,1 @@
+var e=[`independent_creator`,`studio`,`buyer`],t=[`admin`,`super_admin`,`qc_reviewer`,`legal_reviewer`,`finance`,`viewer`],n=[`DRAFT`,`UPLOADING`,`PREPARING`,`QC_REVIEW`,`RIGHTS_REVIEW`,`LICENSING_READY`,`LIVE_FOR_BUYERS`,`IN_NEGOTIATION`,`LICENSED`,`DELIVERED`];export{t as n,n as r,e as t};
