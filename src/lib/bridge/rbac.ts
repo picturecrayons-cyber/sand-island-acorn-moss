@@ -30,6 +30,7 @@ const INTERNAL_PERMISSIONS: Record<InternalRole, readonly Permission[]> = {
     "title.license",
     "title.negotiate",
     "title.deliver",
+    "title.reverse",
     "asset.sign_upload",
     "asset.sign_download",
     "payment.create_order",
