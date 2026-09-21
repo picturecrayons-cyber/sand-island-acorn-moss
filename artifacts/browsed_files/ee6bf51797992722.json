@@ -1,0 +1,1 @@
+{"Status":0,"TC":false,"RD":true,"RA":true,"AD":false,"CD":false,"Question":[{"name":"hostingermail-c._domainkey.crayonspictures.com.","type":5}],"Answer":[{"name":"hostingermail-c._domainkey.crayonspictures.com.","type":5,"TTL":300,"data":"hostingermail-c.dkim.mail.hostinger.com."}],"Comment":"Response from 162.159.25.42."}
